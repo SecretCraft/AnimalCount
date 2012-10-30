@@ -1,8 +1,15 @@
-package d4rk.animals;
+package d4rk.mc;
 
-import java.util.*;
-import net.minecraft.client.Minecraft;
-import net.minecraft.src.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import net.minecraft.src.Chunk;
+import net.minecraft.src.Entity;
+import net.minecraft.src.EntityItem;
+import net.minecraft.src.EntityList;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.World;
 
 public class AnimalCount {
 	static public AnimalCount ac = new AnimalCount();
@@ -104,27 +111,20 @@ public class AnimalCount {
     
     private String getKey(Entity e) {
     	if(e instanceof EntityPlayer) return "Player";
-    	if(e instanceof EntityItem) return "Item";
-    	return e.getEntityName();
+    	return EntityList.getEntityString(e);
     }
     
     private boolean isAnimal(String e) {
     	if(e == "Sheep") return true;
     	if(e == "Cow") return true;
-    	if(e == "Mooshroom") return true;
-    	if(e == "") return true;
-    	if(e == "") return true;
-    	if(e == "") return true;
+    	if(e == "Pig") return true;
+    	if(e == "Chicken") return true;
     	return false;
     }
     
     private void addOne(String entity) {
     	Integer val = result.get(entity);
-        if(val == null) {
-        	result.put(entity, 1);
-        	return;
-        }
-        result.put(entity, val+1);
+    	result.put(entity, val == null ? 1 : 1+val);
     }
     
     private long getCount() {

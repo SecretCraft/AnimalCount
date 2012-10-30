@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import d4rk.animals.AnimalCount;
+import d4rk.mc.AnimalCount;
 
 public class ItemSpade extends ItemTool
 {
